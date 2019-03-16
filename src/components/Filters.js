@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
-import { Button, Nav, Navbar, Form, FormControl, Dropdown} from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFileExport } from '@fortawesome/free-solid-svg-icons';
+import { Button, Nav, Navbar, Form, FormControl, Dropdown, NavItem} from 'react-bootstrap';
+import { NavDropdown } from 'react-bootstrap';
 
 class Filters extends Component {
   
-  changeToAUS = () => {
-    this.props.onSelectPage(2);
+  selectCountryCode = (res) => {
+    this.props.onSelectPage(res.target.innerHTML);
   }
 
   render() {
@@ -13,14 +16,16 @@ class Filters extends Component {
       {label: "1", value: 1},
       {label: "2", value: 2},
     ];
-    return (
+    return ( 
       <div>
       <Navbar bg="light" variant="light">
-        <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-        <Nav className="mr-auto">
-          <Nav.Link onClick={this.changeToAUS}>ALL</Nav.Link>
-          <Nav.Link href="#features">Features</Nav.Link>
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
+        <Nav className="mr-auto" onClick={this.selectCountryCode}>
+          <Nav.Link>ALL</Nav.Link>
+          <Nav.Link>JPY</Nav.Link>
+          <Nav.Link>USD</Nav.Link>
+          <Nav.Link>AUD</Nav.Link>
+          <Nav.Link>HKD</Nav.Link>
+          <Nav.Link>EUR</Nav.Link>
         </Nav>
         <Form inline>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
@@ -33,23 +38,29 @@ class Filters extends Component {
           <Select
             placeholder={'Select data range'}
             options={options}
+            styles={selectStyle}
           />
         </div>
         <div class="col-md-6">
-            <p class="text-left">Entries</p>
-            <Select
-              placeholder={'Select data range'}
-              options={options}
+          <p class="text-left">Entries</p>
+          <Select
+            placeholder={'10 entries'}
+            options={options}
+          />
+          <p class="text-left">Type</p>
+          <Select
+            placeholder={'Select activity'}
+            options={options}
+          />
+          <Button variant="outline-dark" color="purple">
+            <FontAwesomeIcon 
+              icon={faFileExport}
             />
-            <p class="text-left">Type</p>
-            <Select
-              placeholder={'Select data range'}
-              options={options}
-            />
-          </div>
+            Export
+          </Button>
+        </div>
       </div>
       </div>
-      
     );
   }
 }

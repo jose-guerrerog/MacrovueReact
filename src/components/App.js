@@ -16,13 +16,12 @@ class App extends Component {
   }
   
   _handlePage = (page) => {
-    debugger;
     this.setState({ page });
   };
 
-  componentDidMount() {
-
-  }
+  componentDidUpdate = () => {
+    debugger;
+  };
 
   render() {
     return (
