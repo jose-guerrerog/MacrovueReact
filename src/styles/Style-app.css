@@ -8,18 +8,16 @@
 .green-section {
     background: greenyellow;
     height: 100px;
-    position: fixed;
     width: 100%;
 }
 
 .select-range {
     width: 200px;
-};
+}
 
 label.search {
     width: 100px;
-  }
-  
+}
 
 .inline {
     display: inline;
@@ -31,4 +29,19 @@ label.search {
 
 .navbar .dropdown {
     background-color: #3e968a;
+}
+
+.column-header {
+    width: 50%;
+    padding: 10px;
+}
+
+.row > p {
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 992px) {
+    .column-header {
+      width: 100%;
+    }
 }

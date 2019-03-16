@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'react-bootstrap';
 import macrovue from '../utils/macrovue.png';
 import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
+import '../styles/Style-app.css';
 
 class Header extends Component {
   constructor(props) {
@@ -35,19 +35,22 @@ class Header extends Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-        <Row className="green-section">
-          <Col className="col-md-6">
+        <div class="green-section">
+          <div class="row">
+          <div class="column-header">
             <p>Activity</p>
-          </Col>
-          <Col className="col-md-6">
-            <Row>
+          </div>
+          <div class="column-header">
+            <div class="row">
+              <p>gygu</p>
+            </div>
+            <div class="row">
               <p>{this.state.username}</p>
-            </Row>
-            <Row>
-              <p>{this.state.username}</p>
-            </Row>
-          </Col>
-        </Row>
+            </div>
+          </div>
+          </div>
+        </div>
+        
       </div>
     );
   }
