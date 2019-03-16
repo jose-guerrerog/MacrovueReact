@@ -3,7 +3,8 @@ import Select from 'react-select';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileExport } from '@fortawesome/free-solid-svg-icons';
 import { Button, Nav, Navbar, Form, FormControl, Dropdown, NavItem} from 'react-bootstrap';
-import { NavDropdown } from 'react-bootstrap';
+import { NavDropdown, Grid} from 'react-bootstrap';
+import '../styles/Style-app.css'; 
 
 class Filters extends Component {
   
@@ -18,7 +19,7 @@ class Filters extends Component {
     ];
     return ( 
       <div>
-      <Navbar bg="light" variant="light">
+      <Navbar>
         <Nav className="mr-auto" onClick={this.selectCountryCode}>
           <Nav.Link>ALL</Nav.Link>
           <Nav.Link>JPY</Nav.Link>
@@ -32,25 +33,39 @@ class Filters extends Component {
           <Button variant="outline-primary">Search</Button>
         </Form>
       </Navbar>
+      <hr />
       <div class="row">
         <div class="col-md-6">
-          <p class="text-left">Date Range</p>
-          <Select
-            placeholder={'Select data range'}
-            options={options}
-            styles={selectStyle}
-          />
+            <label for="sRange" className = "search"><span className ="monospace">
+              Date range: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  </span>
+              <Select
+              id='sRange'
+              placeholder={'Select data range'}
+              options={options}
+              className="select-range"
+            />
+        </label><br />
+            <label for='sRange'>Range</label>
+
+            <Select
+              id='sRange'
+              placeholder={'Select data range'}
+              options={options}
+              className="select-range"
+            />
         </div>
         <div class="col-md-6">
-          <p class="text-left">Entries</p>
+          <p class="text-left col-md-3">Entries</p>
           <Select
             placeholder={'10 entries'}
             options={options}
+            className="col-md-3"
           />
           <p class="text-left">Type</p>
           <Select
             placeholder={'Select activity'}
             options={options}
+            className="select-range"
           />
           <Button variant="outline-dark" color="purple">
             <FontAwesomeIcon 
@@ -60,6 +75,7 @@ class Filters extends Component {
           </Button>
         </div>
       </div>
+      <hr />
       </div>
     );
   }
