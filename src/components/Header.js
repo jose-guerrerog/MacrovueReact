@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import macrovue from '../utils/macrovue.png';
 import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
 import '../styles/Style-app.css';
+import moment from 'moment';
 
 class Header extends Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class Header extends Component {
     };
   }
   render() {
+    const { date } = this.state;
     return (
       <div>
         <Navbar collapseOnSelect expand="lg">
@@ -25,10 +27,10 @@ class Header extends Component {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ml-auto">
-              <Nav.Link>Dashboard</Nav.Link>
-              <Nav.Link href="#pricing">Vues</Nav.Link>
-              <Nav.Link href="#deets">Stocks</Nav.Link>
-              <Nav.Link href="#deets">Watchlist</Nav.Link>
+              <Nav.Link href="#Dashboard">Dashboard</Nav.Link>
+              <Nav.Link href="#Vues">Vues</Nav.Link>
+              <Nav.Link href="#Stocks">Stocks</Nav.Link>
+              <Nav.Link href="#Watchlist">Watchlist</Nav.Link>
               <NavDropdown title="Activity" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="">Activity</NavDropdown.Item>
               </NavDropdown>
@@ -42,7 +44,7 @@ class Header extends Component {
           </div>
           <div class="column-header">
             <div class="row">
-              <p>gygu</p>
+              <p>{moment(`${date.year}/${date.month}/${date.day}`).format('dddd,MMM DD, YYYY')}</p>
             </div>
             <div class="row">
               <p>{this.state.username}</p>
