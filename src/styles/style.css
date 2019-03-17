@@ -36,6 +36,12 @@ label.search {
   width: 100px;
 }
 
+.filter-block {
+  display: flex;
+  margin-right: 20px;
+  justify-content: space-between;
+}
+
 .inline {
   display: inline;
 }
@@ -74,17 +80,18 @@ hr {
 
 .select-container {
   display: inline-block;
+  justify-content: center;
 }
 
 .select-range {
   display: inline-block;
-  width: 200px;
+  min-width: 150px;
   height: 40px;
 }
 
 .select-entry {
   display: inline-block;
-  width: 200px;
+  min-width: 100px;
   height: 40px;
 }
 
@@ -149,6 +156,10 @@ hr {
     height: 170px;
   }
 
+  .filter-block {
+    display: block;
+    margin-right: 0;
+  }
   .header-user {
     margin-left: 20px;
   }
