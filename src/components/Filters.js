@@ -3,19 +3,15 @@ import Select from 'react-select';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileExport } from '@fortawesome/free-solid-svg-icons';
 import { Button, Nav, Navbar, Form, FormControl, Dropdown, NavItem} from 'react-bootstrap';
-import '../styles/Style-app.css'; 
+import '../styles/style.css'; 
 
 class Filters extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      country: 'ALL',
-    };
   }
 
   getValue = (value, options) => {
     if (!value) { return value }
-    debugger;
     const currentOption = options.find(option => option.value === value);
     if (currentOption) { return currentOption }
     return { value, label: value };
@@ -23,8 +19,17 @@ class Filters extends Component {
 
   selectCountryCode = (res) => {
     const selectedCountryCode = res.value || res.target.innerHTML;
-    this.setState({ country: selectedCountryCode });
-    this.props.onSelectPage(selectedCountryCode);
+    this.props.onSelectCountryCode(selectedCountryCode);
+  }
+
+  selectEntries = (res) => {
+    const selectedEntries = res.value;
+    this.props.onSelectEntries(selectedEntries);
+  }
+
+  selectType = (res) => {
+    const selectedType = res.value;
+    this.props.onSelectType(selectedType);
   }
 
   render() {
@@ -40,10 +45,17 @@ class Filters extends Component {
       { label: 'HKD', value: 'HKD' },
       { label: 'EUR', value: 'EUR' },
     ];
+
+    const entries = [
+      { label: '5', value: '5'},
+      { label: '10', value: '10'},
+      { label: '100', value: '100'},
+    ];
+
     return ( 
       <div>
         <Navbar>
-          <Nav className="mr-auto" onClick={this.selectCountryCode}>
+          <Nav className="mr-auto nav-tog-country" onClick={this.selectCountryCode}>
             <Nav.Link>ALL</Nav.Link>
             <Nav.Link>JPY</Nav.Link>
             <Nav.Link>USD</Nav.Link>
@@ -51,50 +63,50 @@ class Filters extends Component {
             <Nav.Link>HKD</Nav.Link>
             <Nav.Link>EUR</Nav.Link>
           </Nav>
-        <Select
-          placeholder={'Select Country'}
-          value={this.getValue(this.state.country, countries)}
-          onChange={this.selectCountryCode}
-          options={countries}
-          className={"select-country"}
-        />
-        <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-        </Form>
-      </Navbar>
-      <hr />
-      <div>
-        <div className="select-container">
-          <span className="label-select">Date Range</span>
           <Select
-            placeholder={'Select date range'}
-            options={options}
-            className={"select-range"}
+            placeholder={'Select Country'}
+            value={this.getValue(this.props.selectedCountryCode, countries)}
+            onChange={this.selectCountryCode}
+            options={countries}
+            className={"select-country"}
           />
-        </div>
-        <div className="select-container">
-          <span className="label-select">Showing</span>
-          <Select
-            placeholder={'10 entries'}
-            options={options}
-            className={"select-entry"}
-          />
-        </div>
-        <div className="select-container">
-          <span className="label-select">Type</span>
-          <Select
-            placeholder={'Select activity'}
-            options={options}
-            value={'2'}
-            className={"select-activity"}
-          />
-        </div>
-          <Button variant="outline-dark" color="purple">
-            <FontAwesomeIcon 
-              icon={faFileExport}
+        </Navbar>
+        <hr />
+        <div className="filter-block">
+          <div className="select-container">
+            <span className="label-select">Date Range</span>
+            <Select
+              placeholder={'Select date range'}
+              //options={options}
+              className={"select-range"}
             />
-            Export
-          </Button>
+          </div>
+          <div className="select-container">
+            <span className="label-select">Showing</span>
+            <Select
+              placeholder={'10 entries'}
+              value={this.getValue(this.props.selectedEntries, entries)}
+              options={entries}
+              className={"select-entry"}
+            />
+          </div>
+          <div className="select-container">
+            <span className="label-select">Type</span>
+            <Select
+              placeholder={'Select activity'}
+              options={options}
+              ///value={'2'}
+              className={"select-activity"}
+            />
+          </div>
+          <div className="export-button-container">
+            <Button variant="outline-dark" color="purple" className="export-button">
+              <FontAwesomeIcon 
+                icon={faFileExport}
+              />
+              Export
+            </Button>
+          </div>
         </div>
     </div>
     );

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
 import Header from './Header';
 import Filters from './Filters';
 import ContainerData from './ContainerData';
+import '../styles/style.css'; 
 
 class App extends Component {
   constructor(props) {
@@ -10,11 +10,23 @@ class App extends Component {
     this.state = {
       countryCode: 'ALL',
       type: 'ALL',
-      entries: 10,
+      entries: 5,
       page: 1,
     };
   }
   
+  _handleCountryCode = (countryCode) => {
+    this.setState({ countryCode });
+  };
+
+  _handleType = (type) => {
+    this.setState({ type });
+  };
+
+  _handleEntries = (entries) => {
+    this.setState({ entries });
+  };
+
   _handlePage = (page) => {
     this.setState({ page });
   };
@@ -25,17 +37,14 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div>
         <Header />
         <Filters
           onSelectCountryCode={this._handleCountryCode}
           selectedCountryCode={this.state.countryCode}
           onSelectEntries={this._handleEntries}
-          selectedEntry={this.state.entries}
           onSelectType={this._handleType}
-          selectedType={this.state.type}  
           onSelectPage={this._handlePage}
-          selectedPage={this.state.page}
         />
         <ContainerData page={this.state.entries}/>
         <p>{this.state.page}</p>

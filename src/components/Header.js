@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import macrovue from '../utils/macrovue.png';
 import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
-import '../styles/Style-app.css';
+import '../styles/style.css';
 import moment from 'moment';
 
 class Header extends Component {
@@ -22,7 +22,7 @@ class Header extends Component {
       <div>
         <Navbar collapseOnSelect expand="lg">
           <Navbar.Brand href="#home">
-          <img src={macrovue} height="50" className="inline-block"/>
+          <img src={macrovue} height="50"/>
             MACROVUE</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -40,14 +40,14 @@ class Header extends Component {
         <div className="green-section">
           <div className="row">
           <div className="column-header">
-            <p>Activity</p>
+            <h1>Activity</h1>
           </div>
           <div className="column-header">
-            <div className="row">
-              <p>{moment(`${date.year}/${date.month}/${date.day}`).format('dddd,MMM DD, YYYY')}</p>
-            </div>
-            <div className="row">
+            <div className="row header-user">
               <p>{this.state.username}</p>
+            </div>
+            <div className="row header-date">
+              <p>{moment(`${date.year}/${date.month}/${date.day}`).format('dddd,MMM DD, YYYY')}</p>
             </div>
           </div>
           </div>
