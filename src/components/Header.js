@@ -37,16 +37,16 @@ class Header extends Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-        <div class="green-section">
-          <div class="row">
-          <div class="column-header">
+        <div className="green-section">
+          <div className="row">
+          <div className="column-header">
             <p>Activity</p>
           </div>
-          <div class="column-header">
-            <div class="row">
+          <div className="column-header">
+            <div className="row">
               <p>{moment(`${date.year}/${date.month}/${date.day}`).format('dddd,MMM DD, YYYY')}</p>
             </div>
-            <div class="row">
+            <div className="row">
               <p>{this.state.username}</p>
             </div>
           </div>

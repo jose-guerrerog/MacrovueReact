@@ -1,47 +1,114 @@
 .nav-divider {
-    height: 1px;
-    margin: 9px 0;
-    overflow: hidden;
-    background-color: #e5e5e5;
+  height: 1px;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
 }
 
 .green-section {
-    background: greenyellow;
-    height: 100px;
-    width: 100%;
+  background: greenyellow;
+  height: 100px;
+  width: 100%;
 }
 
 .select-range {
-    width: 200px;
+  width: 200px;
 }
 
 label.search {
-    width: 100px;
+  width: 100px;
 }
 
 .inline {
-    display: inline;
+  display: inline;
 }
 
 .inline-block {
-    display: inline-block;
+  display: inline-block;
 };
 
 .navbar .dropdown {
-    background-color: #3e968a;
+  background-color: #3e968a;
 }
 
 .column-header {
-    width: 50%;
-    padding: 10px;
+  width: 50%;
+  padding: 10px;
+}
+
+hr {
+  height: 1px;
 }
 
 .row > p {
-    margin: 0 auto;
+  margin: 0 auto;
+}
+
+.navbar .select-country{
+  display: none;
+}
+
+.select-container {
+  display: inline-block;
+}
+
+.select-range {
+  display: inline-block;
+  width: 200px;
+  margin-bottom: 15px;
+}
+
+.select-entry {
+  display: inline-block;
+  width: 200px;
+  margin-bottom: 15px;
+}
+
+.select-activity {
+  display: inline-block;
+  width: 200px;
+  margin-bottom: 15px;
 }
 
 @media screen and (max-width: 992px) {
-    .column-header {
-      width: 100%;
-    }
+  .column-header {
+    width: 100%;
+  }
+
+  .mr-auto {
+    display: none;
+  }
+
+  .nav-country ul {
+    display: none;
+  }
+
+  .navbar {
+    display: block;
+  }
+
+  .label-select {
+    display: none;
+  }
+
+  .navbar .select-country {
+    margin-bottom: 15px;
+    display: block;
+  }
+
+  .select-container {
+    display: block;
+  }
+
+  .select-range {
+    width: 100%;
+  }
+  
+  .select-entry {
+    width: 100%;
+  }
+  
+  .select-activity {
+    width: 100%;
+  }
 }
