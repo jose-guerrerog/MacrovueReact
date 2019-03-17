@@ -1,4 +1,4 @@
-export const DisplayData = [
+export const fakeData = [
   {
     date: {
       day: 19,

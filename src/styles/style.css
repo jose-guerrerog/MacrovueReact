@@ -88,6 +88,10 @@ hr {
   margin-right: 20px;
 }
 
+.close-button {
+  display: none;
+}
+
 .export-button-container {
   display: inline-block;
   padding: 0;
@@ -116,7 +120,19 @@ hr {
   display: none;
 }
 
-@media screen and (max-width: 992px) {
+.hidden-select {
+  display: none;
+}
+
+.data-margin {
+  margin-top: 20px;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+@media screen and (max-width: 960px) {
   .green-section {
     height: 200px;
   }
@@ -143,6 +159,20 @@ hr {
 
   .nav-tog-country {
     display: none;
+  }
+
+  .close-button {
+    display: block;
+    float: right;
+    background-color: none;
+    margin: 0 15px;
+    background: transparent;
+    border: transparent;
+    color: green;
+  }
+
+  .hidden-select {
+    display: block;
   }
 
   .label-select {
@@ -175,7 +205,6 @@ hr {
   .export-button-container {
     display: block;
     margin: 0 15px;
-    background-color: gray;
   }
 
   .export-button {

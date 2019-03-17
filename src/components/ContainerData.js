@@ -13,7 +13,6 @@ class ContainerData extends Component {
   }
 
   onSelectPage = (page) => {
-    debugger;
     this.setState({ page });
   }
 
@@ -31,6 +30,7 @@ class ContainerData extends Component {
     }, {
       Header: 'AmountAUD',
       accessor: 'amountAUD',
+      textAlign: "right",
       Cell: props => <span className='number'>{props.value}</span>
     }, {
       Header: 'EndingCashAUD',
@@ -38,7 +38,7 @@ class ContainerData extends Component {
       Cell: props => <span className='number'>{props.value}</span>
     }];
     return (
-      <div>
+      <div className="data-margin">
         <div className="react-table-desktop">
           <ReactTable
             data={this.props.data}
@@ -51,7 +51,7 @@ class ContainerData extends Component {
           />
         </div>
         <div className="react-table-mobile">
-          <table class="table table-striped">
+          <table className="table table-striped">
             <tbody>
               {this.props.data.map(row =>
                 <tr>
@@ -64,8 +64,8 @@ class ContainerData extends Component {
                     </div>
                   </div>
                   <div className="row">{row.action}</div>
-                  <div className="row green-text">{row.amountAUD}</div>
-                  <div className="row green-text">{row.endingCashAUD}</div>
+                  <div className="row bold-text">{'Amount AUD:'}<span className="green-text bold-text">{row.amountAUD}</span></div>
+                  <div className="row bold-text">{'Ending Cash AUD:'}<span className="green-text">{row.endingCashAUD}</span></div>
                </tr>
             )}
             </tbody>

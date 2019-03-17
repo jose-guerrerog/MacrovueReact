@@ -24,7 +24,6 @@ class Filters extends Component {
 
   selectEntries = (res) => {
     const selectedEntries = res.value;
-    debugger;
     this.props.onSelectEntries(selectedEntries);
   }
 
@@ -33,11 +32,11 @@ class Filters extends Component {
     this.props.onSelectType(selectedType);
   }
 
+  toggleDisplayData = () => {
+    this.props.onToggleDisplayData();
+  }
+
   render() {
-    const options = [
-      {label: "1", value: 1},
-      {label: "2", value: 2},
-    ];
     const countries = [
       { label: 'ALL', value: 'ALL' },
       { label: 'JPY', value: 'JPY' },
@@ -73,12 +72,16 @@ class Filters extends Component {
           />
         </Navbar>
         <hr />
+        <div>
+          <Button onClick={this.toggleDisplayData} className="close-button">
+            Close X
+          </Button>
+        </div>
         <div className="filter-block">
           <div className="select-container">
             <span className="label-select">Date Range</span>
             <Select
               placeholder={'Select date range'}
-              //options={options}
               className={"select-range"}
             />
           </div>
@@ -99,6 +102,12 @@ class Filters extends Component {
               onChange={this.selectType}
               options={this.props.optionTypes}
               ///value={'2'}
+              className={"select-activity"}
+            />
+          </div>
+          <div className="select-container hidden-select">
+            <Select
+              placeholder={'Sort by Date'}
               className={"select-activity"}
             />
           </div>
