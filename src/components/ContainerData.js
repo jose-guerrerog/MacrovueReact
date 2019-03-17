@@ -18,24 +18,53 @@ class ContainerData extends Component {
 
   render() {
     const columns = [{
-      Header: 'Date',
       accessor: 'date',
-      Cell: props => <span className = 'date'>{moment(`${props.value.year}-${props.value.month}-${props.value.day}`).format('YYYY-MM-DD')}</span>
+      Header: () => (
+        <div
+          style={{
+            textAlign:"center",
+            fontWeight: "bold",
+          }}
+        >Date</div>),
+      Cell: props => <div style={{textAlign: "center"}}>{moment(`${props.value.year}-${props.value.month}-${props.value.day}`).format('YYYY-MM-DD')}</div>
     }, {
-      Header: 'Type',
-      accessor: 'type'
+      accessor: 'type',
+      Header: () => (
+        <div
+          style={{
+            textAlign:"left",
+            fontWeight: "bold",
+          }}
+        >Type</div>),
     }, {
-      Header: 'Action',
-      accessor: 'action'
+      accessor: 'action',
+      Header: () => (
+        <div
+          style={{
+            textAlign:"left",
+            fontWeight: "bold",
+          }}
+        >Action</div>),
     }, {
-      Header: 'AmountAUD',
       accessor: 'amountAUD',
-      textAlign: "right",
-      Cell: props => <span className='number'>{props.value}</span>
+      Header: () => (
+        <div
+          style={{
+            textAlign:"right",
+            fontWeight: "bold",
+          }}
+        >Amount AUD</div>),
+      Cell: props => <div style={{textAlign: "right"}}>{props.value}</div>
     }, {
-      Header: 'EndingCashAUD',
       accessor: 'endingCashAUD',
-      Cell: props => <span className='number'>{props.value}</span>
+      Header: () => (
+        <div
+          style={{
+            textAlign:"right",
+            fontWeight: "bold",
+          }}
+        >Ending Cash AUD</div>),
+      Cell: props => <div style={{textAlign: "right"}}>{props.value}</div>
     }];
     return (
       <div className="data-margin">

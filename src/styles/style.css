@@ -114,6 +114,7 @@ hr {
 
 .react-table-desktop {
   display: block;
+  margin: 0 15px;
 }
 
 .react-table-mobile {

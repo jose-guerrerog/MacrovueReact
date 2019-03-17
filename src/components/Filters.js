@@ -71,6 +71,7 @@ class Filters extends Component {
             className={"select-country"}
           />
         </Navbar>
+        
         <hr />
         <div>
           <Button onClick={this.toggleDisplayData} className="close-button">
