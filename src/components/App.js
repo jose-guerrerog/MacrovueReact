@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Header from './Header';
 import Filters from './Filters';
 import ContainerData from './ContainerData';
-import '../styles/style.css'; 
+import '../styles/style.css';
+import { DisplayData } from './FakeData'; 
 
 class App extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class App extends Component {
       countryCode: 'ALL',
       type: 'ALL',
       entries: 5,
-      page: 1,
+      data: DisplayData,
     };
   }
   
@@ -27,15 +28,27 @@ class App extends Component {
     this.setState({ entries });
   };
 
-  _handlePage = (page) => {
-    this.setState({ page });
-  };
+  componentDidUpdate = (prevProps, prevState) => {
+    const {
+      countryCode,
+      type
+    } = this.state;
 
-  componentDidUpdate = () => {
-    debugger;
+    if (countryCode !== prevState.countryCode || type !== prevState.type)
+    {
+      const dataByCountry = countryCode === 'ALL' ? DisplayData : DisplayData.filter( x => x.countryCode === countryCode);
+      const dataByType = type === 'ALL' ? dataByCountry : dataByCountry.filter(x => x.type === type);
+      this.setState({ data: dataByType });
+    }
   };
 
   render() {
+    const {countryCode} = this.state;
+    const dataByCountry = countryCode === 'ALL' ? DisplayData : DisplayData.filter( x => x.countryCode === countryCode);
+    const getUniqueTypes = dataByCountry.map(x=>x.type).filter((v, i, a) => a.indexOf(v) === i);
+    let uniqueTypes = [];
+    getUniqueTypes.forEach( x => uniqueTypes.push({label: x, value: x}));
+    
     return (
       <div>
         <Header />
@@ -43,11 +56,15 @@ class App extends Component {
           onSelectCountryCode={this._handleCountryCode}
           selectedCountryCode={this.state.countryCode}
           onSelectEntries={this._handleEntries}
+          selectedEntries={this.state.entries}
           onSelectType={this._handleType}
-          onSelectPage={this._handlePage}
+          selectedType={this.state.type}
+          optionTypes={uniqueTypes}
         />
-        <ContainerData page={this.state.entries}/>
-        <p>{this.state.page}</p>
+        <ContainerData 
+          data={this.state.data}
+          selectedSizePage={this.state.entries}
+        />
       </div>
     );
   }

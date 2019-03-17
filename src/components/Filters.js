@@ -24,6 +24,7 @@ class Filters extends Component {
 
   selectEntries = (res) => {
     const selectedEntries = res.value;
+    debugger;
     this.props.onSelectEntries(selectedEntries);
   }
 
@@ -85,6 +86,7 @@ class Filters extends Component {
             <span className="label-select">Showing</span>
             <Select
               placeholder={'10 entries'}
+              onChange={this.selectEntries}
               value={this.getValue(this.props.selectedEntries, entries)}
               options={entries}
               className={"select-entry"}
@@ -94,7 +96,8 @@ class Filters extends Component {
             <span className="label-select">Type</span>
             <Select
               placeholder={'Select activity'}
-              options={options}
+              onChange={this.selectType}
+              options={this.props.optionTypes}
               ///value={'2'}
               className={"select-activity"}
             />

@@ -104,6 +104,18 @@ hr {
   border-color: #4B0082;
 }
 
+.DataTable {
+  margin: 0 15px;
+}
+
+.react-table-desktop {
+  display: block;
+}
+
+.react-table-mobile {
+  display: none;
+}
+
 @media screen and (max-width: 992px) {
   .green-section {
     height: 200px;
@@ -172,5 +184,36 @@ hr {
     display: block;
     background: #4B0082;
     color: white;
+  }
+
+  .react-table-desktop {
+    display: none;
+  }
+
+  .react-table-mobile {
+    display: block;
+    margin: 0 15px;
+  }
+
+  tr > .row{
+    margin: 0 5px;
+  }
+
+  table {
+    width: 100%;
+    margin: 0;
+  }
+
+  .react-table-mobile > .row {
+    width: 100%;
+  }
+
+  .date-mobile {
+    color: yellowgreen;
+    margin: 0 10px 0 0;
+  }
+
+  .green-text {
+    color: #006400;
   }
 }
